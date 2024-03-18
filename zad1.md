@@ -40,7 +40,7 @@
 
 1. Bot udający człowieka stara się symulować normalną rozmowę z człowiekiem, natomiast bot "Asystujący, służący" zaprojektowany jest do konkretnych zadań.
 
-2. 
+3. 
    - Raz bot opowiada żart, a raz mówi, że nie zna żadnego.
    - Powtarza to, co napisałem.
    - Nawiązuje wypowiedzi do słów kluczowych.
