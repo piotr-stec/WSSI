@@ -27,6 +27,7 @@
 8. Symboliczne obliczanie pochodnych - mieści się
 9. Symboliczne całkowanie - mieści się
 10. Kierowanie samochodem - mieści się
+Wszystkie problemy można uznać, że mieszczą się w zakresie sztucznej inteligencji. Każdy gorzej lub lepiej jest w stanie rozwiązywać problem.
 
 ## Zadanie 3
 
@@ -35,6 +36,7 @@
 3. Dyskusja naukowa - może być
 4. Odpowiadanie na pytania klientów w telefonicznej infolinii - może być
 5. Odpowiadanie na pytania klientów w internetowej infolinii - może być
+Wszystkie przykłady mogą być imitowane przez sztuczne systemy natomiast do konkretnego przykładu musi być stworzony osobny stystem uczony na konretnych przykładach.
 
 ## Zadanie 4
 
