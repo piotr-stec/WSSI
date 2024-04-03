@@ -68,6 +68,73 @@
       rodzic(X,J),
       rodzic(H,J).
     ```
+### ZAD 2
+```
+kobieta(X) :-
+    \+mezczyzna(X).
+
+ojciec(X,Y) :-
+    rodzic(Y,X),
+    mezczyzna(X).
+
+matka(X,Y) :-
+    rodzic(Y,X),
+    kobieta(X).
+
+corka(X,Y) :-
+    rodzic(X,Y),
+    kobieta(X).
+
+brat_rodzony(X,Y) :-
+    rodzic(X,H),
+    rodzic(X,J),
+    rodzic(Y,H),
+    rodzic(Y,J),
+    mezczyzna(X).
+
+brat_przyrodni(X,Y) :-
+    rodzic(X,H),
+    rodzic(X,J),
+    rodzic(Y,H),
+    rodzic(Y,I),
+    mezczyzna(X).
+
+kuzyn(X,Y) :-
+    rodzic(X,H),
+    rodzic(H,J),
+    rodzic(Y,I),
+    rodzic(I,J).
+
+dziadek_od_strony_ojca(X,Y) :-
+    ojciec(H,Y),
+    ojciec(X,H).
+
+dziadek_od_strony_matki(X,Y) :-
+	matka(H,Y),
+    ojciec(Y,H).
+
+dziadek(X,Y) :-
+    rodzic(Y,H),
+    ojciec(X,H).
+
+babcia(X,Y) :-
+    rodzic(Y,H),
+    matka(X,H).
+
+wnuczka(X,Y) :-
+    rodzic(Y,H),
+    rodzic(H,X),
+    kobieta(Y).
+   
+przodek_do2pokolenia_wstecz(X,Y) :-
+    rodzic(Y,H),
+    rodzic(H,X).
+
+przodek_do3pokolenia_wstecz(X,Y) :-
+    rodzic(Y,H),
+    rodzic(J,H),
+    rodzic(H,X).
+```
 
   
   
