@@ -31,10 +31,13 @@ class DecisionTree:
         pass
 
     def _information_gain(self, y, X_column, threshold):
-        return
+        # return self._entropy(y)
+        pass
 
     def _split(self, X_column, split_threshold):
-        pass
+        left_idxs = np.where(X_column <= split_threshold)[0]
+        right_idxs = np.where(X_column > split_threshold)[0]
+        return left_idxs, right_idxs
 
     def _entropy(self, y):
         hist = np.bitcount(y)
