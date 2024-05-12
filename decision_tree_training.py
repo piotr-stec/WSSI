@@ -2,6 +2,8 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from decision_tree import DecisionTree
 import numpy as np
+from collections import Counter
+
 
 data = datasets.load_iris()
 X, y = data.data, data.target
@@ -16,6 +18,7 @@ predictions = clf.predict(X_test)
 def accuracy(y_test, y_pred):
     return np.sum(y_test == y_pred) / len(y_test)
 
+print(Counter(y_test).most_common(1)[0][0])
 
 acc = accuracy(y_test, predictions)
 print(acc)
