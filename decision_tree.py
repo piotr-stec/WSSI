@@ -31,11 +31,7 @@ class DecisionTree:
     # W innym przypadku losowo wybiera cechy w ilosci self n_features z ilości cech w danych czyli shape[1]
     # wybiera najlepszą ceche
     def _grow_tree(self, X, y, depth=0):
-        n_samples = X.shape[0]
-        n_feat = X.shape[1]
-        n_labels = np.unique(y)
-        feat_idxs = np.random.choice(n_feat, self.n_features, replace=False)
-
+        pass
 
 
     # szuka najlepszego ig dla wszystkich możliwych feat_idxs i ich thresholdow i zwraca najlepszy index cechy i threshold
@@ -52,15 +48,14 @@ class DecisionTree:
                     best_ig = ig
                     best_feature = feat_idx
                     best_threshold = threshold
-        return best_threshold, best_feature
-
-
-
+        return best_feature, best_threshold
 
     # oblicza ig dla kolumny dziele wzgl threshold na lewy i prawy i dla nich entropia zwracam parent entropy - ważona dzieci
     def _information_gain(self, y, X_column, threshold):
         parent_entropy = self._entropy(y)
         left_indexes, right_indexes = self._split(X_column, threshold)
+        if len(left_indexes) == 0 or len(right_indexes) == 0:
+            return 0
         n_left = len(left_indexes)
         n_right = len(right_indexes)
         n = len(y)
@@ -79,8 +74,15 @@ class DecisionTree:
         ps = hist / len(y)
         return - np.sum([p * np.log(p) for p in ps if p > 0])
 
+    # jeżeli node jest liściem to zwraca jego wartość w przeciwnym wypadku rekurencyjnie przechodzi po drzewie
+    # Jeżeli wartość cechy jest mniejsza równa od threshold to przeszukuje lewe poddrzewo w przeciwnym wypadku prawe
+    # poddrzewo
     def _traverse_tree(self, x, node):
-        pass
+        if node.is_leaf_node():
+            return node.value
+        if x[node.feature] <= node.threshold:
+            return self._traverse_tree(x, node.left)
+        return self._traverse_tree(x, node.right)
 
     def predict(self, X):
         return np.array([self._traverse_tree(x, self.root) for x in X])
